@@ -20,8 +20,11 @@ const Country = () => {
         const data = await response.json();
         const log = await console.log(data.name, data.population, data.region, data.capital, data.flag);
         setCountry(data);
+        setBorderCountry(data?.borders);
+        console.log(borderCountries);
         data?.borders?.forEach((element) => {
-          setBorderCountry((element) => [...element, element]);
+          // setBorderCountry((element) => [...element, element]);
+          //setBorderCountry(data?.borders);
           console.log(element);
           console.log(borderCountries);
         });
@@ -32,23 +35,64 @@ const Country = () => {
     };
 
     useEffect(() => {
-      window.scroll(0, 0);
+      // window.scroll(0, 0);
       fetchCountryData(alpha3Code);
-    }, []);
+    }, [alpha3Code]);
 
     
     //cathycode
 
 
     return (
-        <>
-            <img className="flag-img" src={country.flag} alt="SVG image" />
-            <h1> NAME { country.name }</h1>
-            <p> REGION { country.region }</p>
-            {/* {country && country.borders.forEach(element => {
-              <p>{element}</p>
-            })}  */}
+      <>
+        <Link to="/" className="back-link">
+            <span>&larr;</span> Back
+          </Link>
+        {isLoading ? (
+          <h2 animate={{ opacity: 1 }} className="searching">
+            Searching...
+          </h2>
+        ) : (<>
+          <section className="flag-section">
+            <img className="flag-img" src={country.flag} alt={`flag of ${country.name}`} />
+          </section>
+          <section className="info-section">
+            <h1 style={{ fontWeight: "bold", fontSize: "60px" }}>{country.name}</h1>
+            <p> Native name: {country.nativeName}</p>
+            <p> Population: {country.population.toLocaleString()}</p>
+            <p> Region: {country.region}</p>
+            <p> Sub Region: {country.subregion}</p>
+            <p> Capital: {country.capital}</p>
+
+            <p> Top Level Domain: {country.topLevelDomain}</p>
+            <p> Currencies: {country.currencies[0].name}</p>
+            <p> Languages: {country.languages[0].name}</p>
+          </section>
+
+          <p>Border Countries:</p> 
+          
+          {country.borders?.length ? (
+                  country.borders.map((country, index) => (
+                    <Link
+                      key={index}
+                      className="border-country"
+                      to={`/${country}`}
+                    >
+                      <span>  {country}  </span>
+                    </Link>
+                  ))
+                ) : (
+                  <p>NONE</p>
+          )}
+         
+          
+          
+          
         </>
+        )
+        }
+
+      </>
 
     );
 }
