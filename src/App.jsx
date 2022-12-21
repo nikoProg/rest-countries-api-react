@@ -4,7 +4,7 @@ import { CountriesProvider } from "./context/CountriesContext";
 import { ModeProvider } from "./context/ModeContext";
 import Country from "./components/Country";
 
-import { BrowserRouter as Router, Route, Routes, useParams } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 const App = () => {
   return (

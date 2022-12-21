@@ -7,9 +7,11 @@ import ChevronWhite from "../assets/ChevronWhite";
 import ChevronUp from "../assets/ChevronUp";
 import ChevronUpWhite from "../assets/ChevronUpWhite";
 import Countries from "./Countries";
+import CountriesContext from "../context/CountriesContext";
 
 const Main = () => {
   const { mode } = useContext(ModeContext);
+  const { countries } = useContext(CountriesContext);
   const [region, setRegion] = useState(false);
 
   const toggleRegion = () => {
@@ -67,7 +69,7 @@ const Main = () => {
           <div className={`${region ? "block" : "hidden"} region w-[250px] bg-white text-light-veryDarkBlue mt-2 px-[30px] py-[15px] rounded-md shadow-lg translate-x-[511%] transition-all duration-500`}>
             <ul className="space-y-2">
               <li>
-                <a href="#">Africa</a>
+                <div onClick={useEffect(() => {(console.log(countries.filter(country => country.region == "Africa")))}, [])}>Africa</div>
               </li>
               <li>
                 <a href="#">America</a>

@@ -6,11 +6,11 @@ import ModeContext from "../context/ModeContext";
 const Country = () => {
     const { alpha3Code } = useParams();
 
-    //cathycode
+    
     const [country, setCountry] = useState([]);
     const [borderCountries, setBorderCountry] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
-    let { name } = useParams();
+    
     
     const fetchCountryData = async (alpha3Code) => {
       try {
@@ -22,12 +22,12 @@ const Country = () => {
         setCountry(data);
         setBorderCountry(data?.borders);
         console.log(borderCountries);
-        data?.borders?.forEach((element) => {
+        /* data?.borders?.forEach((element) => {
           // setBorderCountry((element) => [...element, element]);
           //setBorderCountry(data?.borders);
           console.log(element);
-          console.log(borderCountries);
-        });
+          console.log(borderCountries); 
+        });*/
         setIsLoading(false);
       } catch (error) {
         console.log(error);
@@ -39,8 +39,7 @@ const Country = () => {
       fetchCountryData(alpha3Code);
     }, [alpha3Code]);
 
-    
-    //cathycode
+
 
 
     return (
