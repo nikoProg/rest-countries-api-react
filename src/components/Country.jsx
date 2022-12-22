@@ -61,10 +61,12 @@ const Country = () => {
             <p> Population: {country.population.toLocaleString()}</p>
             <p> Region: {country.region}</p>
             <p> Sub Region: {country.subregion}</p>
-            <p> Capital: {country.capital}</p>
+            {/* <p> Capital: {country.capital ?? ""}</p> */}
+            { country.capital ? ( <p>Capital: {country.capital}</p>) : (<p style={{fontWeight: "bold"}}>NO CAPITAL</p>)}
 
             <p> Top Level Domain: {country.topLevelDomain}</p>
-            <p> Currencies: {country.currencies[0].name}</p>
+            {/* <p> Currencies: {country.currencies[0].name ?? ""}</p> */}
+            { country.currencies ? ( <p>Currencies: {country.currencies[0].name}</p> ) : (<p style={{fontWeight: "bold"}}>NO CURRENCIES</p>)}
             <p> Languages: {country.languages[0].name}</p>
           </section>
 

@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
-import SearchWhite from "../assets/SearchWhite";
-import Search from "../assets/Search";
+import SearchIconWhite from "../assets/SearchIconWhite";
+import SearchIcon from "../assets/SearchIcon";
 import ModeContext from "../context/ModeContext";
 import Chevron from "../assets/Chevron";
 import ChevronWhite from "../assets/ChevronWhite";
@@ -8,46 +8,47 @@ import ChevronUp from "../assets/ChevronUp";
 import ChevronUpWhite from "../assets/ChevronUpWhite";
 import Countries from "./Countries";
 import CountriesContext from "../context/CountriesContext";
+import RegionFilter from "./RegionFilter";
 
 const Main = () => {
   const { mode } = useContext(ModeContext);
   const { countries } = useContext(CountriesContext);
   const [region, setRegion] = useState(false);
 
-  const toggleRegion = () => {
+/*   const toggleRegion = () => {
     setRegion((prev) => !prev)
-  }
+  } */
 
   return (
     <main
       className={`${mode ? "bg-white" : "bg-dark-veryDarkBlue"} ${
         mode ? "text-light-veryDarkBlue" : "text-white"
-      } transition-all duration-500  px-[80px] py-[40px]`}
+      } px-[20px] md:px-[80px] py-[40px]`}
     >
-      <div className="top flex justify-between items-center">
-        <div className="input relative">
+      <div className="top flex flex-col gap-10 xxl:gap-0 xl:flex-row xl:justify-between xl:items-center">
+        
           {mode ? (
-            <>
-              <Search />
+            <div className="">
+              <SearchIcon />
               <input
-                className="bg-white font-[600] px-[100px] py-[15px] rounded-md shadow-lg transition-all duration-500 focus:opacity-50 focus:outline-0"
-                type="text"
+                className={`${mode ? "bg-white" : "bg-dark-veryDarkBlue"}"bg-white  font-[600] px-[100px] py-[15px] w-[100%] md:w-[500px] rounded-md shadow-lg focus:outline-0 transition-all duration-500 focus:opacity-50 focus:outline-0"
+                type="text"`}
                 placeholder="Search for a country..."
               />
-            </>
+            </div>
           ) : (
-            <>
-              <SearchWhite />
+            <div className="">
+              <SearchIconWhite />
               <input
                 className="bg-dark-darkBlue text-white font-[600] px-[100px] py-[15px] rounded-md shadow-lg transition-all duration-1000 focus:opacity-50 focus:outline-0"
                 type="text"
                 placeholder="Search for a country..."
-              />
-            </>
+              />  
+            </div>
           )}
-        </div>
+           <RegionFilter/>
 
-        {mode ? (
+        {/* {mode ? (
           <>
             <div className="filter w-[250px] flex items-center space-x-14 bg-white text-light-veryDarkBlue px-[30px] py-[15px] rounded-md shadow-lg transition-all duration-500">
               <button onClick={toggleRegion}>Filter by Region</button>
@@ -69,7 +70,7 @@ const Main = () => {
           <div className={`${region ? "block" : "hidden"} region w-[250px] bg-white text-light-veryDarkBlue mt-2 px-[30px] py-[15px] rounded-md shadow-lg translate-x-[511%] transition-all duration-500`}>
             <ul className="space-y-2">
               <li>
-                <div onClick={useEffect(() => {(console.log(countries.filter(country => country.region == "Africa")))}, [])}>Africa</div>
+                <div>Africa</div>
               </li>
               <li>
                 <a href="#">America</a>
@@ -108,9 +109,11 @@ const Main = () => {
             </ul>
           </div>
         </>
-      )}
+      )} */}
 
-      <div className="bottom pt-[40px] flex flex-wrap justify-between">
+      </div>
+        
+      <div className="bottom pt-[40px] flex flex-wrap justify-between transition-all duration-500">
         <Countries/>
       </div>
     </main>

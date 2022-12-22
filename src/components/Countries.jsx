@@ -15,7 +15,7 @@ const Countries = () => {
         return (
         <Link key={country.alpha3Code} to={`/${country.alpha3Code}`}>
           <section
-            className="w-[300px] rounded-lg shadow-lg cursor-pointer basis-[21%] mb-[80px]"
+            className="w-[300px] rounded-lg shadow-lg cursor-pointer basis-[21%] mb-[80px] transition-all duration-500"
             key={idx}
           >
             <div className="image h-[200px] w-[100%]">

@@ -5,6 +5,7 @@ const CountriesContext = createContext();
 export const CountriesProvider = ({ children }) => {
 
   const [countries, setCountries] = useState([]);  
+  const [isLoading, setIsLoading] = useState(true);
 
   const fetchCountries = async () => {
     try {
@@ -27,7 +28,7 @@ export const CountriesProvider = ({ children }) => {
     return () => (mounted = false);
   }, []);
 
-  return <CountriesContext.Provider value={{countries, setCountries}}>
+  return <CountriesContext.Provider value={{countries, setCountries, isLoading, setIsLoading}}>
             {children}
         </CountriesContext.Provider>;
 };

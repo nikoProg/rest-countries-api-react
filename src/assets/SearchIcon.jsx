@@ -1,10 +1,10 @@
-import React from "react";
+import React from 'react'
 
-const SearchWhite = () => {
+const SearchIcon = () => {
   return (
     <ion-icon
       style={{
-        color: "white",
+        color: "hsl(200, 15%, 8%)",
         position: "absolute",
         top: "15px",
         left: "60px",
@@ -12,7 +12,7 @@ const SearchWhite = () => {
       }}
       name="search"
     ></ion-icon>
-  );
-};
+  )
+}
 
-export default SearchWhite;
+export default SearchIcon;
