@@ -18,6 +18,7 @@ This is my solution to the [REST Countries API with color theme switcher challen
 
 - Live Site URL: [My solution on Netlify](https://rest-countries-nikoprog-react-upgrade.netlify.app/)
 - This repository: https://github.com/nikoProg/rest-countries-api-react
+- Markdown Live Preview which helped me write this readme! https://markdownlivepreview.com/
 
 ## My process
 
