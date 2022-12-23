@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 
 import { useParams, Link } from "react-router-dom";
 import ModeContext from "../context/ModeContext";
 
 const Country = () => {
     const { alpha3Code } = useParams();
-
+    const { mode } = useContext(ModeContext);
     
     const [country, setCountry] = useState([]);
     const [borderCountries, setBorderCountry] = useState([]);

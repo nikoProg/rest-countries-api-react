@@ -13,6 +13,7 @@ export const CountriesProvider = ({ children }) => {
       const data = await response.json();
       const log = await console.log(data[0].name, data[0].population, data[0].region, data[0].capital, data[0].flag);
       setCountries(data);
+      setIsLoading(false);
     } catch (error) {
       console.log(error);
     }

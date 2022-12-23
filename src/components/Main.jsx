@@ -9,11 +9,24 @@ import ChevronUpWhite from "../assets/ChevronUpWhite";
 import Countries from "./Countries";
 import CountriesContext from "../context/CountriesContext";
 import RegionFilter from "./RegionFilter";
+import Search from "./Search";
 
 const Main = () => {
   const { mode } = useContext(ModeContext);
-  const { countries } = useContext(CountriesContext);
-  const [region, setRegion] = useState(false);
+  const { setCountries } = useContext(CountriesContext);
+  //const [region, setRegion] = useState(false);
+
+
+  const getCountryByRegion = async (regionName) => {
+    try {
+      const res = await fetch(`https://restcountries.com/v2/region/${regionName}`);
+      if (!res.ok) throw new Error("Failed..........");
+      const data = await res.json();
+      setCountries(data);
+    } catch (error) {
+      setError(false);
+    }
+  };
 
 /*   const toggleRegion = () => {
     setRegion((prev) => !prev)
@@ -28,25 +41,27 @@ const Main = () => {
       <div className="top flex flex-col gap-10 xxl:gap-0 xl:flex-row xl:justify-between xl:items-center">
         
           {mode ? (
-            <div className="">
+            <div className=" relative">
               <SearchIcon />
-              <input
-                className={`${mode ? "bg-white" : "bg-dark-veryDarkBlue"}"bg-white  font-[600] px-[100px] py-[15px] w-[100%] md:w-[500px] rounded-md shadow-lg focus:outline-0 transition-all duration-500 focus:opacity-50 focus:outline-0"
-                type="text"`}
-                placeholder="Search for a country..."
-              />
-            </div>
-          ) : (
-            <div className="">
-              <SearchIconWhite />
-              <input
-                className="bg-dark-darkBlue text-white font-[600] px-[100px] py-[15px] rounded-md shadow-lg transition-all duration-1000 focus:opacity-50 focus:outline-0"
+              {/* <input
+                className="bg-white  font-[600] px-[100px] py-[15px] w-[100%] md:w-[500px] rounded-md shadow-lg transition-all duration-690 focus:opacity-50 focus:outline-0"
                 type="text"
                 placeholder="Search for a country..."
-              />  
+              /> */}
+              <Search></Search>
+            </div>
+          ) : (
+            <div className=" relative">
+              <SearchIconWhite />
+              {/* <input
+                className="bg-dark-darkBlue text-white font-[600] px-[100px] py-[15px] w-[100%] md:w-[500px] rounded-md shadow-lg transition-all duration-1000 focus:opacity-50 focus:outline-0"
+                type="text"
+                placeholder="Search for a country..."
+              />   */}
+              <Search></Search>
             </div>
           )}
-           <RegionFilter/>
+           <RegionFilter onSelect={getCountryByRegion} />
 
         {/* {mode ? (
           <>
