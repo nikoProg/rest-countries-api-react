@@ -43,21 +43,11 @@ const Main = () => {
           {mode ? (
             <div className=" relative">
               <SearchIcon />
-              {/* <input
-                className="bg-white  font-[600] px-[100px] py-[15px] w-[100%] md:w-[500px] rounded-md shadow-lg transition-all duration-690 focus:opacity-50 focus:outline-0"
-                type="text"
-                placeholder="Search for a country..."
-              /> */}
               <Search></Search>
             </div>
           ) : (
             <div className=" relative">
               <SearchIconWhite />
-              {/* <input
-                className="bg-dark-darkBlue text-white font-[600] px-[100px] py-[15px] w-[100%] md:w-[500px] rounded-md shadow-lg transition-all duration-1000 focus:opacity-50 focus:outline-0"
-                type="text"
-                placeholder="Search for a country..."
-              />   */}
               <Search></Search>
             </div>
           )}

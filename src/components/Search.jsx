@@ -21,7 +21,7 @@ const Search = () => {
   return (
     <form onSubmit={handleSubmit}>
       <input
-        whileFocus={{ scale: 1.1 }}
+        whilefocus={{ scale: 1.1 }}
         className={`${
           mode ? "bg-white" : "bg-dark-darkBlue"
         }  font-[600] px-[100px] py-[15px] w-[100%] md:w-[500px] rounded-md shadow-lg focus:outline-0`}

@@ -11,7 +11,7 @@ export const CountriesProvider = ({ children }) => {
     try {
       const response = await fetch("https://restcountries.com/v2/all");
       const data = await response.json();
-      const log = await console.log(data[0].name, data[0].population, data[0].region, data[0].capital, data[0].flag);
+      const log = console.log("ALL COUNTRIES SUCCESSFULLY FETCHED");
       setCountries(data);
       setIsLoading(false);
     } catch (error) {
